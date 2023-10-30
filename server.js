@@ -17,8 +17,10 @@ const Task = mongoose.model('Task', {
     text: String
 });
 
-app.get('/', async (req, res) => {
-    res.send('Hello, this is the backend server for the GameIt web App!');
+app.get('/tasks', async (req, res) => {
+    console.log('GET /tasks endpoint hit'); // Add this line
+    const tasks = await Task.find();
+    res.json(tasks);
 });
 
 app.get('/tasks', async (req, res) => {
